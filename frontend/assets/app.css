@@ -1,0 +1,70 @@
+/* Student Records — project styling on top of the shared UI system. */
+:root { --accent-h: 148; --accent-s: 62%; --accent-l: 42%; }
+
+.conn {
+  display: flex; align-items: center; gap: 8px;
+  font-size: .78rem; color: var(--text-muted);
+  padding: 7px 10px; border-radius: var(--radius-sm); background: var(--surface-2);
+}
+.conn .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--text-dim); flex: 0 0 7px; }
+.conn.online .dot { background: var(--ok); box-shadow: 0 0 0 3px var(--ok-soft); }
+.conn.offline .dot { background: var(--danger); box-shadow: 0 0 0 3px var(--danger-soft); }
+
+.student-cell { display: flex; align-items: center; gap: 11px; min-width: 0; }
+.student-cell .sb { min-width: 0; }
+.student-cell .sn { font-weight: 570; }
+.student-cell .sr { font-size: .76rem; color: var(--text-dim); font-variant-numeric: tabular-nums; }
+
+.marks-cell { display: flex; align-items: center; gap: 11px; justify-content: flex-end; }
+.marks-value { font-variant-numeric: tabular-nums; font-weight: 620; min-width: 30px; text-align: right; }
+.marks-bar { width: 92px; }
+
+.grade-a { color: var(--ok); }
+.grade-b { color: var(--accent); }
+.grade-c { color: var(--warn); }
+.grade-d { color: var(--danger); }
+
+.histogram { display: flex; align-items: stretch; gap: 6px; height: 210px; padding-top: 20px; }
+.hbar { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.hbar-track { flex: 1; display: flex; align-items: flex-end; }
+.hbar-fill {
+  width: 100%; border-radius: 6px 6px 3px 3px;
+  background: linear-gradient(to top, var(--accent), hsl(var(--accent-h) var(--accent-s) calc(var(--accent-l) + 16%)));
+  min-height: 3px; transition: height .5s var(--ease);
+  position: relative;
+}
+.hbar-count {
+  position: absolute; top: -19px; left: 0; right: 0; text-align: center;
+  font-size: .72rem; font-weight: 640; color: var(--text-muted); font-variant-numeric: tabular-nums;
+}
+.hbar-label {
+  font-size: .68rem; color: var(--text-dim); white-space: nowrap;
+  font-variant-numeric: tabular-nums; text-align: center; margin-top: 8px;
+}
+
+.lb-row {
+  display: flex; align-items: center; gap: 13px;
+  padding: 12px 18px; border-bottom: 1px solid var(--border);
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-rank {
+  width: 26px; height: 26px; flex: 0 0 26px; border-radius: 8px;
+  display: grid; place-items: center; font-size: .74rem; font-weight: 700;
+  background: var(--surface-3); color: var(--text-muted);
+}
+.lb-row:nth-child(1) .lb-rank { background: var(--accent-soft); color: var(--accent); }
+.lb-body { flex: 1; min-width: 0; }
+.lb-name { font-size: .88rem; font-weight: 560; }
+.lb-roll { font-size: .75rem; color: var(--text-dim); }
+.lb-marks { font-size: 1rem; font-weight: 680; font-variant-numeric: tabular-nums; }
+
+.band {
+  padding: 15px 16px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--bg-elev);
+  border-top: 3px solid var(--bc, var(--accent));
+}
+.band-name { font-size: .78rem; font-weight: 640; color: var(--bc, var(--accent)); text-transform: uppercase; letter-spacing: .06em; }
+.band-count { font-size: 1.7rem; font-weight: 680; letter-spacing: -.025em; font-variant-numeric: tabular-nums; }
+.band-range { font-size: .76rem; color: var(--text-dim); }
+
+@media (max-width: 560px) { .marks-bar { display: none; } }
